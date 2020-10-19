@@ -314,7 +314,7 @@ class Music(commands.Cog):
 
             await ctx.send(f'Connected to: **{channel}**', delete_after=20)
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
 
     @commands.command(name="playlist", help="Request songs frm spotify")
@@ -342,7 +342,7 @@ class Music(commands.Cog):
                 source = await YTDLSource.create_source(ctx, i, loop=self.bot.loop, download=False)
                 await player.queue.put(source)
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
 
     @commands.command(name='play', aliases=['single'])
