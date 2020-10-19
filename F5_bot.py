@@ -661,7 +661,7 @@ async def clear_error(ctx, error):
 @has_permissions(administrator=True)
 async def delete(ctx, role:discord.Role):
     await role.delete()
-    await ctx.channel.send("**ROLE DELTED**")
+    await ctx.channel.send("**ROLE DELETED**")
 @delete.error
 async def clear_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
