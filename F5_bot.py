@@ -292,7 +292,7 @@ class Music(commands.Cog):
                 try:
                     channel = ctx.author.voice.channel
                 except AttributeError:
-                    await ctx.send("No channel to join. Please either specify a valid channel or join one.")
+                    await ctx.send("No channel to join. Please either specify a valid channel or join one.", delete_after=20)
                     raise InvalidVoiceChannel('No channel to join. Please either specify a valid channel or join one.')
 
             vc = ctx.voice_client
@@ -303,11 +303,13 @@ class Music(commands.Cog):
                 try:
                     await vc.move_to(channel)
                 except asyncio.TimeoutError:
+                    await ctx.send("f'Moving to channel: <{channel}> timed out.", delete_after=20)
                     raise VoiceConnectionError(f'Moving to channel: <{channel}> timed out.')
             else:
                 try:
                     await channel.connect()
                 except asyncio.TimeoutError:
+                    await ctx.send("f'Connecting to channel: <{channel}> timed out." , delete_after=20)
                     raise VoiceConnectionError(f'Connecting to channel: <{channel}> timed out.')
 
             await ctx.send(f'Connected to: **{channel}**', delete_after=20)
@@ -367,7 +369,7 @@ class Music(commands.Cog):
 
             await player.queue.put(source)
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
     @commands.command(name='pause')
     async def pause_(self, ctx):
@@ -384,7 +386,7 @@ class Music(commands.Cog):
             vc.pause()
             await ctx.send(f'**`{ctx.author}`**: Paused the song!')
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
     @commands.command(name='resume')
     async def resume_(self, ctx):
@@ -401,7 +403,7 @@ class Music(commands.Cog):
             vc.resume()
             await ctx.send(f'**`{ctx.author}`**: Resumed the song!')
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
     @commands.command(name='skip')
     async def skip_(self, ctx):
@@ -421,7 +423,7 @@ class Music(commands.Cog):
             vc.stop()
             await ctx.send(f'**`{ctx.author}`**: Skipped the song!')
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
     @commands.command(name='queue', aliases=['q'])
     async def queue_info(self, ctx):
@@ -445,7 +447,7 @@ class Music(commands.Cog):
 
             await ctx.send(embed=embed)
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
     @commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'])
     async def now_playing_(self, ctx):
@@ -470,7 +472,7 @@ class Music(commands.Cog):
             player.np = await ctx.send(f'**Now Playing:** `{vc.source.title}` '
                                        f'requested by `{vc.source.requester}`')
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
     @commands.command(name='volume', aliases=['vol'])
     async def change_volume(self, ctx, *, vol: float):
@@ -498,7 +500,7 @@ class Music(commands.Cog):
             player.volume = vol / 100
             await ctx.send(f'**`{ctx.author}`**: Set the volume to **{vol}%**')
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
     @commands.command(name='stop')
     async def stop_(self, ctx):
@@ -515,7 +517,7 @@ class Music(commands.Cog):
 
             await self.cleanup(ctx.guild)
         else:
-            await ctx.send("Your in the wrong channel,Please go to <#758318514011373618>")
+            await ctx.send("Your in the wrong channel,Please go to <#767355069883744266>")  #fallen5_bot_channel_id:
 
 client.add_cog(Music(client))
 
@@ -612,6 +614,8 @@ async def on_message(message):
     await client.process_commands(message)
 
 
+
+
 #about developer
 @client.command(name="abt_devlpr", help="Know about the developer")
 async def abt_devlpr(ctx):
@@ -619,6 +623,8 @@ async def abt_devlpr(ctx):
     await channel.send(' <@599884619139121152> ')
     await channel.send(' *Editor @wirally_codm* ')
     await channel.send(' https://instagram.com/wirally_codm?igshid=16z3zqw8k5f0i')
+
+
 
 
 #purge command
@@ -656,16 +662,21 @@ async def clear_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("**You don't have the permission to invoke this command!**")
 
+
+
 #delete command to delete roles on command SYNTAX - .delete @role
 @client.command(name='delete',help="Administrative Use")
 @has_permissions(administrator=True)
 async def delete(ctx, role:discord.Role):
     await role.delete()
-    await ctx.channel.send("**ROLE DELETED**")
+    await ctx.channel.send("**ROLE DELTED**")
 @delete.error
 async def clear_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("**You don't have the permission to invoke this command!**")
+
+
+
 
 #whois comamnd to know anything SYNTAX - .whois @tag
 @client.command(name="whois",help="Administrative Use ")
