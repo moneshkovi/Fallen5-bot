@@ -717,4 +717,4 @@ async def clear_error(ctx, error):
 
 
 
-client.run("NzM2NDkyMDI3MzgxOTQwMjY0.Xxvlpg.RjLx3y6csJbeCg8BBvdBs3ExFXs")
+client.run("Token")
